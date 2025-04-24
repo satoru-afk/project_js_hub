@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let score = 0;
     let timer;
     let timeLeft = 10;
-    let quizData = [
+    const quizData = [
         {
             question: "Which Bauhaus artist created the 'Red Balloon' painting?",
             options: ["Wassily Kandinsky", "Paul Klee", "László Moholy-Nagy", "Oskar Schlemmer"],

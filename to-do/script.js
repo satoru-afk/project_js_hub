@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return true;
         });
         
-        filteredTasks.forEach((task, index) => {
+        filteredTasks.forEach((task) => {
             const taskItem = document.createElement('li');
             taskItem.className = 'task-item';
             
