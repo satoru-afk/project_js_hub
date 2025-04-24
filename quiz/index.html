@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Start Screen -->
+        <div class="screen start-screen active">
+            <div class="bauhaus-shapes">
+                <div class="shape-circle"></div>
+                <div class="shape-triangle"></div>
+                <div class="shape-square"></div>
+            </div>
+            <h1>QUIZ</h1>
+            <p>Test your knowledge with our geometric challenge</p>
+            <button class="start-btn">Start Quiz</button>
+            <a href="/" style="margin-top: 7%;">Back to Home</a>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div class="screen quiz-screen">
+            <div class="quiz-header">
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="question-count">Question <span id="current-question">1</span>/<span id="total-questions">5</span></div>
+                <div class="timer">
+                    <div class="timer-circle"></div>
+                    <span>10</span>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <h2 class="question-text">What is the capital of France?</h2>
+                <div class="options-container">
+                    <button class="option-btn" data-color="red">Paris</button>
+                    <button class="option-btn" data-color="blue">London</button>
+                    <button class="option-btn" data-color="yellow">Berlin</button>
+                    <button class="option-btn" data-color="green">Madrid</button>
+                </div>
+            </div>
+
+            <div class="feedback-container">
+                <div class="feedback-message"></div>
+                <button class="next-btn">Next Question</button>
+                
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="screen results-screen">
+            <div class="result-shapes">
+                <div class="result-circle"></div>
+                <div class="result-rectangle"></div>
+            </div>
+            <h1>Your Score</h1>
+            <div class="score-display">
+                <span class="score">0</span>/<span class="total">5</span>
+            </div>
+            <div class="score-message"></div>
+            <button class="restart-btn">Play Again</button>
+            <a href="/" style="margin-top: 7%;">Back to Home</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

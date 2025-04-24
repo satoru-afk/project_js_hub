@@ -1,0 +1,340 @@
+:root {
+    --primary-red: #E74C3C;
+    --primary-blue: #3498DB;
+    --primary-yellow: #F1C40F;
+    --primary-green: #2ECC71;
+    --dark-bg: #1A1A2E;
+    --darker-bg: #16213E;
+    --light-text: #F1F1F1;
+    --medium-gray: #7F8C8D;
+    --correct-color: #2ECC71;
+    --wrong-color: #E74C3C;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    position: relative;
+    
+}
+
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    background-color: var(--darker-bg);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+.screen.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+/* Start Screen Styles */
+.start-screen {
+    text-align: center;
+}
+
+.bauhaus-shapes {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.shape-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--primary-red);
+}
+
+.shape-triangle {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 80px solid var(--primary-blue);
+}
+
+.shape-square {
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-yellow);
+    transform: rotate(45deg);
+}
+
+.start-screen h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(45deg, var(--primary-red), var(--primary-yellow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.start-screen p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: var(--medium-gray);
+}
+
+.start-btn, .next-btn, .restart-btn {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    background-color: var(--primary-green);
+    color: var(--darker-bg);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.start-btn:hover, .next-btn:hover, .restart-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Quiz Screen Styles */
+.quiz-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.progress-container {
+    width: 60%;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary-red), var(--primary-yellow));
+    transition: width 0.3s;
+}
+
+.question-count {
+    font-weight: 700;
+    color: var(--medium-gray);
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.timer-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--primary-red);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.timer span {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.question-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.question-text {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    line-height: 1.4;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.option-btn {
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    color: var(--light-text);
+}
+
+.option-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.option-btn:hover::before {
+    opacity: 1;
+}
+
+.option-btn[data-color="red"] {
+    background-color: var(--primary-red);
+}
+
+.option-btn[data-color="blue"] {
+    background-color: var(--primary-blue);
+}
+
+.option-btn[data-color="yellow"] {
+    background-color: var(--primary-yellow);
+    color: var(--darker-bg);
+}
+
+.option-btn[data-color="green"] {
+    background-color: var(--primary-green);
+}
+
+.feedback-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    display: none;
+}
+
+.feedback-message {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Results Screen Styles */
+.results-screen {
+    text-align: center;
+}
+
+.result-shapes {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.result-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--primary-red);
+}
+
+.result-rectangle {
+    width: 100px;
+    height: 100px;
+    background-color: var(--primary-blue);
+    transform: rotate(45deg);
+}
+
+.results-screen h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.score-display {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.score {
+    color: var(--primary-yellow);
+}
+
+.total {
+    color: var(--medium-gray);
+}
+
+.score-message {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    color: var(--medium-gray);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .app-container {
+        height: auto;
+        min-height: 100vh;
+        border-radius: 0;
+    }
+
+    .options-container {
+        grid-template-columns: 1fr;
+    }
+
+    .question-text {
+        font-size: 1.5rem;
+    }
+
+    .start-screen h1 {
+        font-size: 2.5rem;
+    }
+}
